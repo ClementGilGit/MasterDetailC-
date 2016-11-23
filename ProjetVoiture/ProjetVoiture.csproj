@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AAD12C09-A1F6-4ED0-9ABE-63183AC51572}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjetVoiture</RootNamespace>
+    <AssemblyName>ProjetVoiture</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="AddMarque.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddModele.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="AddMarque.xaml.cs">
+      <DependentUpon>AddMarque.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddModele.xaml.cs">
+      <DependentUpon>AddModele.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\fondadd.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\fond3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\preview.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Metier\Metier.csproj">
+      <Project>{06c9b21b-1963-4605-a735-4810fd578f97}</Project>
+      <Name>Metier</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\MarqueNissan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\MarqueFerrari1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\FerrariF430.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\pointinterrogation.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\MarqueAstonmartin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\MarqueBMW.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\MarqueBugatti.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\MarqueKoenigsegg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\AgeraR.jpg" />
+    <Resource Include="Image\AstonMartinDB9.jpg" />
+    <Resource Include="Image\AstonMartinVanquish.jpg" />
+    <Resource Include="Image\AstonMartinVantage.jpg" />
+    <Resource Include="Image\background.jpg" />
+    <Resource Include="Image\backgroundlogos2.jpg" />
+    <Resource Include="Image\BMW.jpg" />
+    <Resource Include="Image\CCXR.jpg" />
+    <Resource Include="Image\Challenger.jpg" />
+    <Resource Include="Image\Charger.jpg" />
+    <Resource Include="Image\Desert.jpg" />
+    <Resource Include="Image\Eclipse.jpg" />
+    <Resource Include="Image\Ferrari458I.jpg" />
+    <Resource Include="Image\FerrariEnzo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Veyron.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\M3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\R34.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

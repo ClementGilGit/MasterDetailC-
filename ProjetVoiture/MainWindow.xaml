@@ -1,0 +1,118 @@
+﻿<Window x:Class="ProjetVoiture.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:Metier;assembly=Metier"
+        Title="Annuaire Voiture" Height="700" Width="900"
+        Icon="Image/icon.png" Foreground="Blue">
+    <Window.Resources>
+        <x:Static Member="l:Marque.Marques" x:Key="ListMarque"/>
+    </Window.Resources>
+    <DockPanel>
+        <Label DockPanel.Dock="Bottom" Content="Master Detail by GIL Clément et LAPLANCHE Quentin" HorizontalContentAlignment="Center" Background="CadetBlue" FontWeight="Bold" />
+        <Grid DataContext="{Binding Source={StaticResource ListMarque}}" DockPanel.Dock="Left" HorizontalAlignment="Left">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Sélectionnez une marque : " TextAlignment="Center" FontWeight="Bold" />
+                <Button Width="35" Grid.Column="1" Content="+" FontWeight="Bold" Click="ajouter" />
+            </Grid>
+            <ListView GotFocus="Passage_Sur_Liste"  Name="mListBoxMarques"  ItemsSource="{Binding  }" 
+                     DisplayMemberPath="Nom" IsSynchronizedWithCurrentItem="True" Grid.Row="1" HorizontalAlignment="Stretch"  
+                     Background="Silver" SelectedIndex="-1"  >
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Supprimer" Click="Supprimer_Marque"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListView>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160" />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Sélectionnez un modèle : " TextAlignment="Center" FontWeight="Bold" />
+                <Button Width="35"  Grid.Column="1" Content="+" FontWeight="Bold" Click="Ajouter_Modele"/>
+            </Grid>
+            <ListBox Name="ListBoxModele" ItemsSource="{Binding /Modeles}" DisplayMemberPath="Nomm" 
+                     Grid.Row="3" GotFocus="Passage_Sur_Liste_Voiture" IsSynchronizedWithCurrentItem="True"
+                     HorizontalAlignment="Stretch" Background="silver">
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Supprimer" Click="Supprimer_Modele" />
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+        </Grid>
+        <Grid Name="GridBG" DataContext="{StaticResource ListMarque}">
+            <Grid.Background>
+                <ImageBrush ImageSource="Image/fond3.jpg"/>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Viewbox  Name="ImageMarque" Visibility="Hidden">
+                <Image Source="{Binding ImageSource}" Name="mImage"/>
+            </Viewbox>
+            <Viewbox Visibility="Hidden" Name="ImageVoiture" >
+                <Image Source="{Binding /Modeles/ImageSource}" />
+            </Viewbox>
+            <Border  Grid.Row="1" Background="CadetBlue" BorderBrush="Black" BorderThickness="2" 
+                    Opacity="0.9"   Visibility="Hidden" Name="BorderDetail">
+                <Grid >
+                    <Grid.Resources>
+                        <Style TargetType="WrapPanel" >
+                            <Setter  Property="Margin" Value="2"/>
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontSize" Value="17" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="TextAlignment" Value="Center" />
+                            <Setter Property="FontSize" Value="17" />
+                        </Style>
+                    </Grid.Resources>
+                    <StackPanel Name="DetailMarque" Visibility="Hidden" >
+                        <WrapPanel >
+                            <TextBlock  Text="Nom: " />
+                            <TextBox   Text="{Binding Nom,UpdateSourceTrigger=PropertyChanged}" />
+                        </WrapPanel>
+                        <WrapPanel >
+                            <TextBlock Text="Pays: " />
+                            <TextBox Text="{Binding Pays,UpdateSourceTrigger=PropertyChanged}" />
+                        </WrapPanel>
+                        <WrapPanel >
+                            <TextBlock Text="Fondateur: " />
+                            <TextBox Text="{Binding Fondateur,UpdateSourceTrigger=PropertyChanged}"/>
+                        </WrapPanel>
+                    </StackPanel>
+                    <StackPanel Name="DetailModele" Visibility="Hidden" DataContext="{Binding /Modeles}" >
+                        <WrapPanel >
+                            <TextBlock  Text="Nom: " />
+                            <TextBox   Text="{Binding /Nomm,UpdateSourceTrigger=PropertyChanged}" />
+                        </WrapPanel>
+                        <WrapPanel >
+                            <TextBlock Text="Puissance: " />
+                            <TextBox Text="{Binding /Puissance,UpdateSourceTrigger=PropertyChanged}" />
+                        </WrapPanel>
+                        <WrapPanel >
+                            <TextBlock Text="Année: " />
+                            <TextBox Text="{Binding /Annee,UpdateSourceTrigger=PropertyChanged}"/>
+                        </WrapPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
